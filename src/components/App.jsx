@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { SideBar, Home, Trending, TvShows, TvShowInformation, Movies, MovieInformation } from './';
+import { SideBar, Home, Trending, TvShows, TvShowInformation, Movies, MovieInformation, UpcomingMovies, TvShowsAiringToday, TrendingMovies, TrendingTvShows } from './';
 import { menu, closeBlack } from '../assets/index';
 
 const App = () => {
@@ -27,12 +27,16 @@ const App = () => {
         </div>
 
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/trending' element={<Trending />} />
-          <Route path='/tv-shows/genre/:name' element={<TvShows />} />
-          <Route path='/tv/:id' element={<TvShowInformation />} />
-          <Route path='/movies/genre/:name' element={<Movies />} />
-          <Route path='/movie/:id' element={<MovieInformation />} />
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/trending-now' element={<Trending />} />
+          <Route exact path='/trending/movies' element={<TrendingMovies />} />
+          <Route exact path='/trending/tv-shows' element={<TrendingTvShows />} />
+          <Route exact path='/tv-show/genre/:name' element={<TvShows />} />
+          <Route exact path='/tv-show/:id' element={<TvShowInformation />} />
+          <Route exact path='/movie/genre/:name' element={<Movies />} />
+          <Route exact path='/movie/:id' element={<MovieInformation />} />
+          <Route exact path='/movie/upcoming-movies' element={<UpcomingMovies />} />
+          <Route exact path='/tv/tv-shows-airing-today' element={<TvShowsAiringToday />} />
         </Routes>
       </main>
 

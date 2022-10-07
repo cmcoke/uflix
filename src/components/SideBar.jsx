@@ -16,7 +16,7 @@ const SideBar = () => {
         </li>
 
         <li onClick={() => { }}>
-          <NavLink to='/trending' className={({ isActive }) => isActive ? 'brightness-100 transition-all duration-[.40s] ease-in-out' : 'brightness-50 transition-all duration-[.40s] ease-in-out hover:brightness-100'}>
+          <NavLink to='/trending-now' className={({ isActive }) => isActive ? 'brightness-100 transition-all duration-[.40s] ease-in-out' : 'brightness-50 transition-all duration-[.40s] ease-in-out hover:brightness-100'}>
             <img src={trending} alt="trending" />
           </NavLink>
         </li>
