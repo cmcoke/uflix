@@ -3,3 +3,93 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* prevents vertical scroll from occuring when the mobile menu icon is clicked */
+.active {
+  overflow: hidden;
+}
+
+/* adds padding & the 'Poppins' font to the Home, Trending, Movies & Tv Shows Categories/Genres components */
+.content {
+  font-family: Poppins, sans-serif;
+  padding: 1.75rem 3rem;
+}
+
+/* center vertically & horizontally the BeatLoader component & error messages */
+.fetching-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  font-family: Poppins, sans-serif;
+  font-size: 1.5rem;
+}
+
+/* allows the tv shows, movies & search overlay to appear when clicking on their respected icons */
+.overlay {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(5 6 7 / var(--tw-bg-opacity));
+  z-index: 10;
+}
+
+@media only screen and (min-width: 768px) {
+  .overlay {
+    width: calc(100% - 120px);
+    left: auto;
+    z-index: 9000;
+  }
+}
+
+.overlay-enter {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.overlay-enter-active {
+  opacity: 0.98;
+  visibility: visible;
+  transition: 0.33s visibility ease-in-out, 0.33s opacity ease-in-out, 0.33s transform ease-in-out;
+}
+
+.overlay-enter-done {
+  opacity: 0.98;
+  visibility: visible;
+}
+
+.overlay-exit {
+  visibility: visible;
+  opacity: 0.98;
+}
+
+.overlay-exit-active {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.33s visibility ease-in-out, 0.33s opacity ease-in-out, 0.33s transform ease-in-out;
+}
+
+.overlay-exit-done {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 767px) {
+  .overlay-enter-active, .overlay-enter-done, .overlay-enter-done {
+    opacity: 1;
+  }
+}
+
+/* slide in the sidebar when clicking on the movie or tv shows link only on mobile screens */
+@media only screen and (max-width: 767px) {
+  .modal-active {
+    --tw-translate-x: -100%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+}

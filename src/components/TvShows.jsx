@@ -2,7 +2,7 @@ import React from 'react'
 
 const TvShows = () => {
   return (
-    <div>TvShows</div>
+    <div className='content'>Tv Shows</div>
   )
 }
 
