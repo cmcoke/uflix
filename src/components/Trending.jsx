@@ -50,6 +50,7 @@ const Trending = () => {
 
     </div>
   )
+
 }
 
 export default Trending

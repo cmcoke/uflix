@@ -36,6 +36,18 @@ const fetchTvShowsAiringToday = async () => {
   return data;
 }
 
+// get geners for movies
+const fetchMovieGenres = async () => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${tmdbApiKey}`)
+  return data;
+}
+
+// get geners for tv shows
+const fetchTvShowGenres = async () => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=${tmdbApiKey}`)
+  return data;
+}
+
 
 /******* For components that have infinite scroll *******/
 
@@ -119,14 +131,81 @@ const fetchTvShowsTrendsForInfiniteScroll = async (pageParam) => {
 }
 
 
+// get tv shows by type (categories or genres)
+const TvShowsCategoryOrGenre = (tvShowGenreIdOrCategoryName) => {
+  return useInfiniteQuery(
+    ['tv-shows', tvShowGenreIdOrCategoryName],
+    ({ pageParam = 1 }) => fetchTvShows(tvShowGenreIdOrCategoryName, pageParam),
+    {
+      getNextPageParam: (lastPage) => {
+        const { page, total_pages: totalPages } = lastPage;
+        return (page < totalPages) ? page + 1 : undefined;
+      }
+    }
+  )
+}
+
+const fetchTvShows = async (tvShowGenreIdOrCategoryName, pageParam) => {
+
+  // get tv shows by category
+  if (tvShowGenreIdOrCategoryName && typeof tvShowGenreIdOrCategoryName === 'string') {
+    const { data } = await axios.get(`https://api.themoviedb.org/3/tv/${tvShowGenreIdOrCategoryName}?page=${pageParam}&api_key=${tmdbApiKey}`)
+    return data;
+  }
+
+  // get tv shows by genre
+  if (tvShowGenreIdOrCategoryName && typeof tvShowGenreIdOrCategoryName === 'number') {
+    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/tv?with_genres=${tvShowGenreIdOrCategoryName}&page=${pageParam}&api_key=${tmdbApiKey}`)
+    return data;
+  }
+
+}
+
+
+// get movies by type (categories or genres)
+const MoviesCategoryOrGenre = (movieGenreIdOrCategoryName) => {
+  return useInfiniteQuery(
+    ['movies', movieGenreIdOrCategoryName],
+    ({ pageParam = 1 }) => fetchMovies(movieGenreIdOrCategoryName, pageParam),
+    {
+      getNextPageParam: (lastPage) => {
+        const { page, total_pages: totalPages } = lastPage;
+        return (page < totalPages) ? page + 1 : undefined;
+      }
+    }
+  )
+}
+
+const fetchMovies = async (movieGenreIdOrCategoryName, pageParam) => {
+
+  // get tv shows by category
+  if (movieGenreIdOrCategoryName && typeof movieGenreIdOrCategoryName === 'string') {
+    const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${movieGenreIdOrCategoryName}?page=${pageParam}&api_key=${tmdbApiKey}`)
+    return data;
+  }
+
+  // get tv shows by genre
+  if (movieGenreIdOrCategoryName && typeof movieGenreIdOrCategoryName === 'number') {
+    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?with_genres=${movieGenreIdOrCategoryName}&page=${pageParam}&api_key=${tmdbApiKey}`)
+    return data;
+  }
+
+}
+
+
 export {
   fetchAllTrends,
   fetchMovieTrends,
   fetchTvShowsTrends,
   fetchUpcomingMovies,
   fetchTvShowsAiringToday,
+  fetchMovieGenres,
+  fetchTvShowGenres,
   UpcomingMoviesFeed,
   TvShowsAiringTodayFeed,
   TrendingMoviesFeed,
-  TrendingTvShowsFeed
+  TrendingTvShowsFeed,
+  TvShowsCategoryOrGenre,
+  MoviesCategoryOrGenre
 }
+

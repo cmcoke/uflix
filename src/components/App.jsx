@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
-import { SideBar, Home, Trending, TvShows, TvShowInformation, Movies, MovieInformation, UpcomingMovies, TvShowsAiringToday, TrendingMovies, TrendingTvShows } from './';
+import { SideBar, Home, Trending, TvShows, TvShowInformation, Movies, MovieInformation, UpcomingMovies, TvShowsAiringToday, TrendingMovies, TrendingTvShows, TvShowCategories, MovieCategories } from './';
 import { menu, closeBlack } from '../assets/index';
+import { CSSTransition } from "react-transition-group";
+import { tvShowModal, movieModal } from '../app/store';
 
 const App = () => {
 
   const [toggle, setToggle] = useState(false);
+  const isTvShowModalOpen = tvShowModal((state) => state.isTvShowModalOpen);
+  const isMovieModalOpen = movieModal((state) => state.isMovieModalOpen);
+  const tvShowNodeRef = useRef(null);
+  const movieNodeRef = useRef(null);
 
   const handleClick = () => {
     setToggle(prevState => !prevState);
@@ -15,7 +21,7 @@ const App = () => {
   return (
     <div className="bg-black font-poppins text-white flex w-full min-h-screen overflow-hidden">
 
-      <aside className={`border-r border-neutral-900 bg-black transform top-0 left-0 sm:left-[120px] w-[120px] fixed h-full overflow-auto ease-in-out transition-all duration-300 z-10 ${toggle ? 'translate-x-0' : '-translate-x-full'}`}>
+      <aside className={`border-r border-neutral-900 bg-black transform top-0 left-0 sm:left-[120px] w-[120px] fixed h-full overflow-auto ease-in-out transition-all duration-300 z-10 ${toggle ? 'translate-x-0' : '-translate-x-full'} ${isTvShowModalOpen || isMovieModalOpen ? 'modal-active' : ''} `}>
         <SideBar />
       </aside>
 
@@ -40,8 +46,23 @@ const App = () => {
         </Routes>
       </main>
 
+      {/* shows the tv show categories component when clicking on the tv icon */}
+      <CSSTransition timeout={330} in={isTvShowModalOpen} nodeRef={tvShowNodeRef} classNames='overlay' unmountOnExit>
+        <div ref={tvShowNodeRef}>
+          <TvShowCategories />
+        </div>
+      </CSSTransition>
+
+      {/* shows the movie categories component when clicking on the film icon */}
+      <CSSTransition timeout={330} in={isMovieModalOpen} nodeRef={movieNodeRef} classNames='overlay' unmountOnExit>
+        <div ref={movieNodeRef}>
+          <MovieCategories />
+        </div>
+      </CSSTransition>
+
     </div>
   )
+
 }
 
 export default App

@@ -12,3 +12,5 @@ export { default as UpcomingMovies } from './UpcomingMovies';
 export { default as TvShowsAiringToday } from './TvShowsAiringToday';
 export { default as TrendingMovies } from './TrendingMovies';
 export { default as TrendingTvShows } from './TrendingTvShows';
+export { default as TvShowCategories } from './TvShowCategories';
+export { default as MovieCategories } from './MovieCategories';

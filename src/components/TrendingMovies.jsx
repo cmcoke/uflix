@@ -54,6 +54,7 @@ const TrendingMovies = () => {
 
     </div>
   )
+
 }
 
 export default TrendingMovies

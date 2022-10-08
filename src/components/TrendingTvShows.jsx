@@ -53,6 +53,7 @@ const TrendingTvShows = () => {
 
     </div>
   )
+
 }
 
 export default TrendingTvShows

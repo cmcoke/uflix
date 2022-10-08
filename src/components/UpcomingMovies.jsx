@@ -54,6 +54,7 @@ const UpcomingMovies = () => {
 
     </div>
   )
+
 }
 
 export default UpcomingMovies
