@@ -16,3 +16,6 @@ export { default as TvShowCategories } from './TvShowCategories';
 export { default as MovieCategories } from './MovieCategories';
 export { default as TvShowTrailer } from './TvShowTrailer';
 export { default as MovieTrailer } from './MovieTrailer';
+export { default as Person } from './Person';
+export { default as PersonAppearance } from './PersonAppearance';
+export { default as PersonAppearanceContent } from './PersonAppearanceContent';

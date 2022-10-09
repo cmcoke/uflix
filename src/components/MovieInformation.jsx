@@ -55,7 +55,7 @@ const MovieInformation = () => {
         {/* movie information - name, genre categories, overview .... */}
         <div className="information-text-content">
 
-          <h3 className="font-semibold text-[1.5rem] text-center sm:text-left md:text-[1.7rem] lg:text-[2.7rem] my-6  sm:mb-5">{movieData?.title}</h3>
+          <h3 className="font-semibold text-[1.5rem] text-center sm:text-left md:text-[1.7rem] lg:text-[2.5rem] my-6 sm:mb-5">{movieData?.title}</h3>
 
           <div className="flex flex-col justify-center sm:justify-start ss:flex-row ss:flex-wrap mb-5 sm:mb-5 md:mb-7">
             {movieData?.genres?.map((genre) => (
@@ -115,7 +115,7 @@ const MovieInformation = () => {
                 <img src={play} alt="IMDb Rating" />
                 <p className="ml-2 uppercase font-semibold text-[.92rem]">Trailer</p>
               </button>
-            ) : <button className="disabled flex items-center font-poppins mb-5 md:mb-0 sm:mr-5 bg-[#4e46d8] hover:bg-[#332ea3] transition-all duration-[.40s] ease-in-out rounded-full py-3 px-11">
+            ) : <button className="disabled flex items-center font-poppins mb-5 md:mb-0 sm:mr-5 bg-[#4e46d8] rounded-full py-3 px-11">
               <img src={play} alt="IMDb Rating" />
               <p className="ml-2 uppercase font-semibold text-[.92rem]">Trailer Unavailable</p>
             </button>}
@@ -125,10 +125,10 @@ const MovieInformation = () => {
                 <img src={globe} alt="website" />
                 <p className="ml-3 uppercase font-semibold">Website</p>
               </a>
-            ) : <a href='/' className=" disabled flex items-center font-poppins bg-[#232325] rounded-full py-3 px-11">
+            ) : <button className=" disabled flex items-center font-poppins bg-[#232325] rounded-full py-3 px-11">
               <img src={globe} alt="website" />
               <p className="ml-3 uppercase font-semibold">Website Unavailable</p>
-            </a>}
+            </button>}
 
           </div>
 

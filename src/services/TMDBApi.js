@@ -74,8 +74,8 @@ const fetchTvShowRecommendations = async ({ tv_id, list }) => {
 }
 
 // get a person (actor, actress, director) details
-const fetchPersonDetail = async (person_id) => {
-  const { data } = await axios.get(`https://api.themoviedb.org/3/person/${person_id}?append_to_response=combined_credits,external_ids&api_key=${tmdbApiKey}`)
+const fetchPersonDetail = async ({ person_id }) => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/person/${person_id}?append_to_response=external_ids&api_key=${tmdbApiKey}`)
   return data;
 }
 
@@ -225,6 +225,25 @@ const fetchMovies = async (movieGenreIdOrCategoryName, pageParam) => {
 }
 
 
+// get the movie & tv show appearances of a person
+const PersonAppearanceFeed = ({ person_id }) => {
+  return useInfiniteQuery(
+    ['person-appearance', person_id],
+    ({ pageParam = 1 }) => fetchPersonAppearance({ person_id }, pageParam),
+    {
+      getNextPageParam: (lastPage) => {
+        const { page, total_pages: totalPages } = lastPage;
+        return (page < totalPages) ? page + 1 : undefined;
+      }
+    }
+  )
+}
+
+const fetchPersonAppearance = async ({ person_id }, pageParam) => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/person/${person_id}/combined_credits?api_key=${tmdbApiKey}&page=${pageParam}`)
+  return data;
+}
+
 
 
 export {
@@ -245,6 +264,7 @@ export {
   TrendingMoviesFeed,
   TrendingTvShowsFeed,
   TvShowsCategoryOrGenre,
-  MoviesCategoryOrGenre
+  MoviesCategoryOrGenre,
+  PersonAppearanceFeed
 }
 

@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { SideBar, Home, Trending, TvShows, TvShowInformation, Movies, MovieInformation, UpcomingMovies, TvShowsAiringToday, TrendingMovies, TrendingTvShows, TvShowCategories, MovieCategories, TvShowTrailer, MovieTrailer } from './';
+import { SideBar, Home, Trending, TvShows, TvShowInformation, Movies, MovieInformation, UpcomingMovies, TvShowsAiringToday, TrendingMovies, TrendingTvShows, TvShowCategories, MovieCategories, TvShowTrailer, MovieTrailer, Person } from './';
 import { menu, closeBlack } from '../assets/index';
 import { CSSTransition } from "react-transition-group";
 import { tvShowModal, movieModal, tvShowTrailer, movieTrailer } from '../app/store';
@@ -59,6 +59,7 @@ const App = () => {
             <Route path='/movie/:id' element={<MovieInformation />} />
             <Route path='/movie/upcoming-movies' element={<UpcomingMovies />} />
             <Route path='/tv/tv-shows-airing-today' element={<TvShowsAiringToday />} />
+            <Route path='/person/:id' element={<Person />} />
           </Routes>
         </main>
 

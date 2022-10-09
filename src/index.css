@@ -142,7 +142,8 @@
 @media only screen and (min-width: 1424px) {
 
   .information {
-    grid-template-columns: minmax(4rem, 1fr) repeat(2, minmax(min-content, 45rem)) minmax(4rem, 1fr);
+    /* grid-template-columns: minmax(4rem, 1fr) repeat(2, minmax(min-content, 45rem)) minmax(4rem, 1fr); */
+    grid-template-columns: minmax(4rem, 1fr) repeat(2, minmax(min-content, 80rem)) minmax(4rem, 1fr);
     gap: 0 3rem;
   }
 
