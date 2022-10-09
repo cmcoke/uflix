@@ -22,5 +22,16 @@ const movieGenreOrCategory = create((set) => ({
   selectMovieGenreOrCategory: (value) => set((state) => ({ movieGenreIdOrCategoryName: state.movieGenreIdOrCategoryName = value })),
 }));
 
+const tvShowTrailer = create((set) => ({
+  isTvShowTrailerOpen: false,
+  openTvShowTrailer: () => set((state) => ({ isTvShowTrailerOpen: state.isTvShowTrailerOpen = true })),
+  closeTvShowTrailer: () => set((state) => ({ isTvShowTrailerOpen: state.isTvShowTrailerOpen = false }))
+}));
 
-export { tvShowModal, movieModal, tvShowGenreOrCategory, movieGenreOrCategory };
+const movieTrailer = create((set) => ({
+  isMovieTrailerOpen: false,
+  openMovieTrailer: () => set((state) => ({ isMovieTrailerOpen: state.isMovieTrailerOpen = true })),
+  closeMovieTrailer: () => set((state) => ({ isMovieTrailerOpen: state.isMovieTrailerOpen = false }))
+}));
+
+export { tvShowModal, movieModal, tvShowGenreOrCategory, movieGenreOrCategory, tvShowTrailer, movieTrailer };

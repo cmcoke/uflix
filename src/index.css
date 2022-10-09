@@ -93,3 +93,89 @@
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 }
+
+/* grid container for movie & tv show information */
+.information {
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.information-image, .information-text-content, .information-cast, .information-recommendations {
+  grid-column: 1/-1;
+}
+
+.information-cast {
+  margin-top: 3rem;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .information {
+    grid-template-columns: minmax(3rem, 1fr) repeat(2, minmax(min-content, 45rem)) minmax(3rem, 1fr);
+  }
+
+  .information-image, .information-text-content, .information-cast, .information-recommendations {
+    grid-column: 2/4;
+  }
+
+}
+
+@media only screen and (min-width: 1060px) {
+
+  .information {
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(min-content, 30rem)) minmax(1rem, 1fr);
+    gap: 0 1.5rem;
+  }
+
+  .information-image {
+    grid-column: 2/3;
+  }
+
+  .information-text-content {
+    grid-column: 3/4;
+  }
+
+}
+
+@media only screen and (min-width: 1424px) {
+
+  .information {
+    grid-template-columns: minmax(4rem, 1fr) repeat(2, minmax(min-content, 45rem)) minmax(4rem, 1fr);
+    gap: 0 3rem;
+  }
+
+  .information-image {
+    grid-column: 2/3;
+  }
+
+  .information-text-content {
+    grid-column: 3/4;
+  }
+
+  .information-cast {
+    margin-top: 6rem;
+  }
+
+}
+
+.information-trailer {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(5 6 7 / var(--tw-bg-opacity));
+  z-index: 10;
+  transition: all 33s ease-in-out;
+  opacity: 0.98;
+  /* visibility: visible; */
+}
+
+.information-trailer.remove {
+  opacity: 0;
+  visibility: hidden;
+}

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import StarRatings from 'react-star-ratings';
-import { noImage } from '../assets/index'
+import { noImage } from '../assets/index';
+
 
 const FeedContent = ({ content, i, movieLink, tvShowLink, movieAndTvShowLink }) => {
 

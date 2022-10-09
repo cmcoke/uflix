@@ -48,6 +48,38 @@ const fetchTvShowGenres = async () => {
   return data;
 }
 
+// get a specific movie
+const fetchMovie = async (id) => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}?append_to_response=videos,credits,images&api_key=${tmdbApiKey}`)
+  return data;
+}
+
+// get a specific tv show
+const fetchTvShow = async (id) => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/tv/${id}?append_to_response=videos,credits,images&api_key=${tmdbApiKey}`)
+  return data;
+}
+
+// get movie recommendations
+const fetchMovieRecommendations = async ({ movie_id, list }) => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/${list}?api_key=${tmdbApiKey}`)
+  return data;
+}
+
+
+// get tv show recommendations
+const fetchTvShowRecommendations = async ({ tv_id, list }) => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/${list}?api_key=${tmdbApiKey}`)
+  return data;
+}
+
+// get a person (actor, actress, director) details
+const fetchPersonDetail = async (person_id) => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/person/${person_id}?append_to_response=combined_credits,external_ids&api_key=${tmdbApiKey}`)
+  return data;
+}
+
+
 
 /******* For components that have infinite scroll *******/
 
@@ -193,6 +225,8 @@ const fetchMovies = async (movieGenreIdOrCategoryName, pageParam) => {
 }
 
 
+
+
 export {
   fetchAllTrends,
   fetchMovieTrends,
@@ -201,6 +235,11 @@ export {
   fetchTvShowsAiringToday,
   fetchMovieGenres,
   fetchTvShowGenres,
+  fetchMovie,
+  fetchTvShow,
+  fetchMovieRecommendations,
+  fetchTvShowRecommendations,
+  fetchPersonDetail,
   UpcomingMoviesFeed,
   TvShowsAiringTodayFeed,
   TrendingMoviesFeed,
