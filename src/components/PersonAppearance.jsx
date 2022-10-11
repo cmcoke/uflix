@@ -34,7 +34,7 @@ const PersonAppearance = () => {
       <div className="container fetching-data">
         <BeatLoader
           size={30}
-          color={"#123abc"}
+          color={"#064ce3"}
           loading={true}
           speedMultiplier={1.5}
         />

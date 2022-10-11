@@ -142,8 +142,7 @@
 @media only screen and (min-width: 1424px) {
 
   .information {
-    /* grid-template-columns: minmax(4rem, 1fr) repeat(2, minmax(min-content, 45rem)) minmax(4rem, 1fr); */
-    grid-template-columns: minmax(4rem, 1fr) repeat(2, minmax(min-content, 80rem)) minmax(4rem, 1fr);
+    grid-template-columns: minmax(4rem, 1fr) repeat(2, minmax(min-content, 45rem)) minmax(4rem, 1fr);
     gap: 0 3rem;
   }
 
@@ -173,10 +172,24 @@
   z-index: 10;
   transition: all 33s ease-in-out;
   opacity: 0.98;
-  /* visibility: visible; */
 }
 
 .information-trailer.remove {
   opacity: 0;
   visibility: hidden;
+}
+
+.card {
+  background-color: #050607;
+  animation: fadeIn 0.33s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

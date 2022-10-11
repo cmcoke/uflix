@@ -61,7 +61,7 @@ const MovieCategories = () => {
               <div className="container mx-auto flex items-center justify-center ">
                 <BeatLoader
                   size={20}
-                  color={"#123abc"}
+                  color={"#064ce3"}
                   loading={true}
                   speedMultiplier={1.5}
                 />

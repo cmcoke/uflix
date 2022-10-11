@@ -20,7 +20,7 @@ const Person = () => {
       <div className="container fetching-data">
         <BeatLoader
           size={30}
-          color={"#123abc"}
+          color={"#064ce3"}
           loading={true}
           speedMultiplier={1.5}
         />
@@ -35,7 +35,7 @@ const Person = () => {
   return (
     <div className="content">
 
-      <div className="information">
+      <div className="information card">
 
         {/* image of person */}
         <div className="information-image">

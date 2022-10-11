@@ -245,6 +245,27 @@ const fetchPersonAppearance = async ({ person_id }, pageParam) => {
 }
 
 
+// get search results for movies, tv shows and persons
+const UserSerchResults = (query) => {
+  return useInfiniteQuery(
+    ['search-query', query],
+    ({ pageParam = 1 }) => fetchSearchResults(query, pageParam),
+    {
+      getNextPageParam: (lastPage) => {
+        const { page, total_pages: totalPages } = lastPage;
+        return (page < totalPages) ? page + 1 : undefined;
+      }
+    },
+    { enabled: false }
+  )
+}
+
+const fetchSearchResults = async (query, pageParam) => {
+  const { data } = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${query}&page=${pageParam}&api_key=${tmdbApiKey}`)
+  return data;
+}
+
+
 
 export {
   fetchAllTrends,
@@ -265,6 +286,7 @@ export {
   TrendingTvShowsFeed,
   TvShowsCategoryOrGenre,
   MoviesCategoryOrGenre,
-  PersonAppearanceFeed
+  PersonAppearanceFeed,
+  UserSerchResults
 }
 

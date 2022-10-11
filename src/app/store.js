@@ -34,4 +34,12 @@ const movieTrailer = create((set) => ({
   closeMovieTrailer: () => set((state) => ({ isMovieTrailerOpen: state.isMovieTrailerOpen = false }))
 }));
 
-export { tvShowModal, movieModal, tvShowGenreOrCategory, movieGenreOrCategory, tvShowTrailer, movieTrailer };
+const searchQuery = create((set) => ({
+  userSearchQuery: '',
+  isSearchModalOpen: false,
+  openSearchModal: () => set((state) => ({ isSearchModalOpen: state.isSearchModalOpen = true })),
+  closeSearchModal: () => set((state) => ({ isSearchModalOpen: state.isSearchModalOpen = false })),
+  userSearch: (query) => set((state) => ({ userSearchQuery: state.userSearchQuery = query }))
+}));
+
+export { tvShowModal, movieModal, tvShowGenreOrCategory, movieGenreOrCategory, tvShowTrailer, movieTrailer, searchQuery };

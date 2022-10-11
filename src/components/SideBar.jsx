@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { logo, home, trending, movie, tv, search } from '../assets/index';
-import { tvShowModal, movieModal } from '../app/store';
+import { tvShowModal, movieModal, searchQuery } from '../app/store';
 
 const SideBar = () => {
 
@@ -11,6 +11,10 @@ const SideBar = () => {
   const openMovieModal = movieModal((state) => state.openMovieModal);
   const closeMovieModal = movieModal((state) => state.closeMovieModal);
   const isMovieModalOpen = movieModal((state) => state.isMovieModalOpen);
+
+  const openSearchModal = searchQuery((state) => state.openSearchModal);
+  const closeSearchModal = searchQuery((state) => state.closeSearchModal);
+  const isSearchModalOpen = searchQuery((state) => state.isSearchModalOpen);
 
 
   return (
@@ -23,6 +27,7 @@ const SideBar = () => {
         <li onClick={() => {
           closeMovieModal()
           closeTvShowModal()
+          closeSearchModal()
         }}>
           <NavLink to='/' end className={({ isActive }) => isActive ? 'brightness-100 transition-all duration-[.40s] ease-in-out' : 'brightness-50 transition-all duration-[.40s] ease-in-out hover:brightness-100'} >
             <img src={home} alt="home" />
@@ -32,6 +37,7 @@ const SideBar = () => {
         <li onClick={() => {
           closeMovieModal()
           closeTvShowModal()
+          closeSearchModal()
         }}>
           <NavLink to='/trending-now' className={({ isActive }) => isActive ? 'brightness-100 transition-all duration-[.40s] ease-in-out' : 'brightness-50 transition-all duration-[.40s] ease-in-out hover:brightness-100'}>
             <img src={trending} alt="trending" />
@@ -41,6 +47,7 @@ const SideBar = () => {
         <li onClick={() => {
           openTvShowModal()
           closeMovieModal()
+          closeSearchModal()
         }}>
           <img src={tv} alt="tv shows" className={isTvShowModalOpen ? 'brightness-100 cursor-pointer' : 'brightness-50 transition-all duration-[.40s] ease-in-out hover:brightness-100 cursor-pointer'} />
         </li>
@@ -48,15 +55,17 @@ const SideBar = () => {
         <li onClick={() => {
           openMovieModal()
           closeTvShowModal()
+          closeSearchModal()
         }}>
           <img src={movie} alt="movies" className={isMovieModalOpen ? 'brightness-100 cursor-pointer' : 'brightness-50 transition-all duration-[.40s] ease-in-out hover:brightness-100 cursor-pointer'} />
         </li>
 
         <li onClick={() => {
-          openMovieModal()
+          openSearchModal()
+          closeMovieModal()
           closeTvShowModal()
         }}>
-          <img src={search} alt="search" className={'brightness-50 transition-all duration-[.40s] ease-in-out hover:brightness-100 cursor-pointer'} />
+          <img src={search} alt="search" className={isSearchModalOpen ? 'brightness-100 cursor-pointer' : 'brightness-50 transition-all duration-[.40s] ease-in-out hover:brightness-100 cursor-pointer'} />
         </li>
 
       </ul>

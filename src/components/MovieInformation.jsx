@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { fetchMovie, fetchMovieRecommendations } from '../services/TMDBApi';
 import { movieGenreOrCategory, movieTrailer } from '../app/store';
 import BeatLoader from "react-spinners/BeatLoader";
-import { star, popcorn, play, globe } from '../assets/index';
+import { star, popcorn, play, globe, unknownFemale, unknownMale } from '../assets/index';
 import Feed from './Feed';
 
 
@@ -29,7 +29,7 @@ const MovieInformation = () => {
       <div className="container fetching-data">
         <BeatLoader
           size={30}
-          color={"#123abc"}
+          color={"#064ce3"}
           loading={true}
           speedMultiplier={1.5}
         />
@@ -41,11 +41,10 @@ const MovieInformation = () => {
     return <div className="container fetching-data">There is a network error, please try again later.</div>
   }
 
-
   return (
     <div className='content'>
 
-      <div className="information">
+      <div className="information card">
 
         {/* movie image */}
         <div className="information-image">
@@ -136,19 +135,44 @@ const MovieInformation = () => {
 
         {/* movie cast members */}
         <div className="information-cast mb-8">
-          <h2 className={movieData?.credits.cast ? 'font-poppins text-3xl mb-11 ' : 'hidden'}>Cast Members</h2>
+
+          <h2 className={movieData?.credits.cast < 1 ? 'hidden' : 'font-poppins text-3xl mb-11'}>Cast Members</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {movieData && movieData?.credits.cast.map((character, i) => (
-              character.profile_path && (
-                <Link key={character.name} to={`/person/${character.id}`} className='grid grid-cols-2 items-center justify-center mb-11 sm:mr-4 lg:mr-6'>
-                  <img src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`} alt={character.name} className='w-[140px] h-[140px] object-cover rounded-full' />
-                  <div className="ml-2">
-                    <p>{character?.name}</p>
-                    <p className="text-dimWhite">{character?.character.split('/')[0]}</p>
-                  </div>
-                </Link>
-              )
+            {movieData && movieData.credits.cast.map((character, i) => (
+              // if the character profile path exist show the respected image of the character
+              character.profile_path
+                ? (
+                  <Link key={character.name} to={`/person/${character.id}`} className='grid grid-cols-2 items-center justify-center mb-11 sm:mr-4 lg:mr-6'>
+                    <img src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`} alt={character.name} className='w-[140px] h-[140px] object-cover rounded-full' />
+                    <div className="ml-2">
+                      <p>{character?.name}</p>
+                      <p className="text-dimWhite">{character?.character.split('/')[0]}</p>
+                    </div>
+                  </Link>
+                )
+                : // if the character profile path is null and the gender is a woman
+                !character.profile_path && character.gender === 1
+                  ? (
+                    <Link key={character.name} to={`/person/${character.id}`} className='grid grid-cols-2 items-center justify-center mb-11 sm:mr-4 lg:mr-6'>
+                      <img src={unknownFemale} alt={character.name} className='w-[140px] h-[140px] object-cover rounded-full' />
+                      <div className="ml-2">
+                        <p>{character?.name}</p>
+                        <p className="text-dimWhite">{character?.character.split('/')[0]}</p>
+                      </div>
+                    </Link>
+                  )
+                  // if the character profile path is null and the gender is a man
+                  : !character.profile_path && character.gender === 2
+                    ? (
+                      <Link key={character.name} to={`/person/${character.id}`} className='grid grid-cols-2 items-center justify-center mb-11 sm:mr-4 lg:mr-6'>
+                        <img src={unknownMale} alt={character.name} className='w-[140px] h-[140px] object-cover rounded-full' />
+                        <div className="ml-2">
+                          <p>{character?.name}</p>
+                          <p className="text-dimWhite">{character?.character.split('/')[0]}</p>
+                        </div>
+                      </Link>
+                    ) : ''
             )).slice(0, 8)}
           </div>
 

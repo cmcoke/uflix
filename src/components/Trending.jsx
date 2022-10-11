@@ -17,7 +17,7 @@ const Trending = () => {
       <div className="container fetching-data">
         <BeatLoader
           size={30}
-          color={"#123abc"}
+          color={"#064ce3"}
           loading={true}
           speedMultiplier={1.5}
         />
@@ -30,7 +30,7 @@ const Trending = () => {
   }
 
   return (
-    <div className='content'>
+    <div className='content card'>
 
       <div className="mb-8">
         <div className='flex flex-col ss:flex-row items-baseline'>

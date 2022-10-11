@@ -19,3 +19,6 @@ export { default as MovieTrailer } from './MovieTrailer';
 export { default as Person } from './Person';
 export { default as PersonAppearance } from './PersonAppearance';
 export { default as PersonAppearanceContent } from './PersonAppearanceContent';
+export { default as SearchForm } from './SearchForm';
+export { default as SearchResults } from './SearchResults';
+export { default as SearchResultContent } from './SearchResultContent';
