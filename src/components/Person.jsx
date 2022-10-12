@@ -33,9 +33,9 @@ const Person = () => {
   }
 
   return (
-    <div className="content">
+    <div className="content fade-animation mt-[5rem]">
 
-      <div className="information card">
+      <div className="information">
 
         {/* image of person */}
         <div className="information-image">

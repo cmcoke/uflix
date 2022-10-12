@@ -23,7 +23,7 @@ const FeedContent = ({ content, i, movieLink, tvShowLink, movieAndTvShowLink }) 
   }
 
   return (
-    <div className="px-[5px] py-[17px] card">
+    <div className="px-[5px] py-[17px] fade-animation">
       <Link to={url} className='overflow-hidden inline-block'>
         <img alt={content.title} src={content.poster_path ? `https://image.tmdb.org/t/p/w500/${content.poster_path}` : noImage} className="transition-all duration-[.80s] ease-in-out hover:scale-110" />
       </Link>

@@ -10,6 +10,7 @@ export { default as tv } from './tv.svg';
 export { default as home } from './home.svg';
 export { default as noImage } from './no-image-placeholder.png';
 export { default as star } from './star.png';
+export { default as goldStar } from './gold-star.png';
 export { default as popcorn } from './popcorn.png';
 export { default as globe } from './globe.png';
 export { default as play } from './play.svg';

@@ -1,8 +1,8 @@
 import FeedContent from "./FeedContent"
 
-const Feed = ({ data, numberOfContent, excludeFirst, movieLink, tvShowLink, movieAndTvShowLink }) => {
+const Feed = ({ data, numberOfContent, exclude, movieLink, tvShowLink, movieAndTvShowLink }) => {
 
-  const startFrom = excludeFirst ? 1 : 0;
+  const startFrom = exclude ? 6 : 0;
 
   return (
     <div className='flex flex-col justify-center'>

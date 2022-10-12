@@ -6,7 +6,7 @@ import { noImage } from '../assets/index'
 const SearchResultContent = ({ content }) => {
 
   return (
-    <div className="px-[5px] py-[17px] card">
+    <div className="px-[5px] py-[17px] fade-animation">
       <Link
         className='overflow-hidden inline-block'
         to={(content.media_type === 'movie' && `/movie/${content.id}`) || (content.media_type === 'tv' && `/tv-show/${content.id}`) || (content.media_type === 'person' && `/person/${content.id}`)}>

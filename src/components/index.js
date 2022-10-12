@@ -22,3 +22,4 @@ export { default as PersonAppearanceContent } from './PersonAppearanceContent';
 export { default as SearchForm } from './SearchForm';
 export { default as SearchResults } from './SearchResults';
 export { default as SearchResultContent } from './SearchResultContent';
+export { default as FeaturedContent } from './FeaturedContent';

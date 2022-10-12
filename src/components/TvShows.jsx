@@ -48,6 +48,7 @@ const TvShows = () => {
     return <div className="container fetching-data">There is a network error, please try again later.</div>
   }
 
+
   return (
     <div className='content'>
 

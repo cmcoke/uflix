@@ -12,6 +12,7 @@ const Trending = () => {
   const movieLink = '';
   const tvShowLink = '';
 
+
   if (movieTrendsIsLoading || tvShowTrendsIsLoading) {
     return (
       <div className="container fetching-data">
