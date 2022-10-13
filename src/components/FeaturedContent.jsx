@@ -10,7 +10,7 @@ const FeaturedContent = ({ data }) => {
     rewind: true,
     pauseOnHover: false,
     resetProgress: true,
-    height: 'auto',
+    height: '84vh',
     fixedWidth: '100%',
     speed: '1500',
     arrows: false,
@@ -31,13 +31,13 @@ const FeaturedContent = ({ data }) => {
           {data.map((content, i) => (
             <SplideSlide key={i}>
               <div>
-                <div className='hero'>
+                <div className='slider'>
 
-                  <div className="hero-image">
+                  <div className="slider-image">
                     <img src={`https://image.tmdb.org/t/p/original/${content?.backdrop_path}`} alt={content.title} />
                   </div>
 
-                  <div className="hero-content">
+                  <div className="slider-content">
 
                     <h1 className="font-semibold text-[1.5rem] ss:text-[3rem] md:text-[5rem] xl:text-[6.5rem] lg:mb-0">{content.title || content.name}</h1>
 
