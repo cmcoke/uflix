@@ -6,6 +6,7 @@ import { movieGenreOrCategory, movieTrailer } from '../app/store';
 import BeatLoader from "react-spinners/BeatLoader";
 import { goldStar, play, globe, unknownFemale, unknownMale } from '../assets/index';
 import Feed from './Feed';
+import { noImage } from '../assets/index';
 
 
 const MovieInformation = () => {
@@ -45,7 +46,7 @@ const MovieInformation = () => {
 
     <div className="content-container fade-animation">
 
-      {/* tv show backdrop image */}
+      {/* movie backdrop image */}
       <div className="content-image">
         <div className="backdrop-image">
           <img src={`https://image.tmdb.org/t/p/original/${movieData?.backdrop_path}`} alt={movieData?.name} />
@@ -58,7 +59,7 @@ const MovieInformation = () => {
 
           {/* movie image */}
           <div className="information-image">
-            <img src={`https://image.tmdb.org/t/p/w500/${movieData?.poster_path}`} alt={movieData?.title} className='mx-auto w-full xl:w-fit' />
+            <img src={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500/${movieData?.poster_path}` : noImage} alt={movieData?.title} className='mx-auto w-full xl:w-fit' />
           </div>
 
           {/* movie information - name, genre categories, overview .... */}

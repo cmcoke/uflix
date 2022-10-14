@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from 'react-query';
 import { fetchPersonDetail } from "../services/TMDBApi";
 import BeatLoader from "react-spinners/BeatLoader";
-import { facebook, twitter, instagram, noImage } from '../assets/index';
+import { facebook, twitter, instagram, noImage, unknownFemale, unknownMale } from '../assets/index';
 import PersonAppearance from './PersonAppearance';
 
 const Person = () => {
@@ -39,7 +39,18 @@ const Person = () => {
 
         {/* image of person */}
         <div className="information-image">
-          <img src={data?.profile_path ? `https://image.tmdb.org/t/p/w500/${data?.profile_path}` : noImage} alt={data?.name} className='mx-auto w-full xl:w-fit' />
+          <img src={
+
+            data?.profile_path ? `https://image.tmdb.org/t/p/w500/${data?.profile_path}`
+
+              : !data?.profile_path && data?.gender === 1 ? unknownFemale
+
+                : !data?.profile_path && data?.gender === 2 ? unknownMale
+
+                  : noImage
+
+          }
+            alt={data?.name} className='mx-auto w-full xl:w-fit' />
         </div>
 
         {/* information about the person */}

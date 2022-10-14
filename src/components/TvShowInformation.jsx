@@ -6,6 +6,7 @@ import { tvShowGenreOrCategory, tvShowTrailer } from '../app/store';
 import BeatLoader from "react-spinners/BeatLoader";
 import { goldStar, play, globe, unknownFemale, unknownMale } from '../assets/index';
 import Feed from './Feed';
+import { noImage } from '../assets/index';
 
 const TvShowInformation = () => {
 
@@ -58,7 +59,7 @@ const TvShowInformation = () => {
 
           {/* tv show image */}
           <div className="information-image">
-            <img src={`https://image.tmdb.org/t/p/w500/${tvShowData?.poster_path}`} alt={tvShowData?.name} className='mx-auto w-full xl:w-fit' />
+            <img src={tvShowData?.poster_path ? `https://image.tmdb.org/t/p/w500/${tvShowData?.poster_path}` : noImage} alt={tvShowData?.name} className='mx-auto w-full xl:w-fit' />
           </div>
 
           {/* tv show information - name, genre categories, overview .... */}
@@ -139,7 +140,7 @@ const TvShowInformation = () => {
           {/* tv show cast members */}
           <div className="information-cast mb-8">
 
-            <h2 className={tvShowData?.credits.cast < 1 ? 'hidden' : 'font-poppins text-3xl mb-11'}>Cast Members</h2>
+            <h2 className={tvShowData?.credits.cast.length < 1 ? 'hidden' : 'font-poppins text-3xl mb-11'}>Cast Members</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {tvShowData && tvShowData.credits.cast.map((character, i) => (

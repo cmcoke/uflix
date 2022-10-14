@@ -5,6 +5,7 @@ import { noImage } from '../assets/index'
 
 const SearchResultContent = ({ content }) => {
 
+
   return (
     <div className="px-[5px] py-[17px] fade-animation">
       <Link
