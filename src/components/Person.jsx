@@ -11,6 +11,10 @@ const Person = () => {
   const { id } = useParams();
   const { data, isError, isLoading, refetch } = useQuery(['person', id], () => fetchPersonDetail({ person_id: id }), { enabled: false });
 
+  // splits the array of strings by new line for the 'biography' property
+  let bio = data?.biography?.split("\n\n")
+
+
   useEffect(() => {
     refetch()
   }, [id, refetch])
@@ -37,6 +41,7 @@ const Person = () => {
 
       <div className="information">
 
+
         {/* image of person */}
         <div className="information-image">
           <img src={
@@ -60,9 +65,7 @@ const Person = () => {
           <h3 className="font-semibold text-[1.5rem] text-center sm:text-left md:text-[1.7rem] lg:text-[2.7rem] my-6 sm:mb-5">{data?.name}</h3>
 
           {/* the person' bio */}
-          <p className="max-w-[900px] text-center sm:text-left font-normal text-dimWhite text-[18px] leading-[30.8px] mb-8">
-            {data?.biography}
-          </p>
+          {bio?.map((value, index) => <p key={index} className="max-w-[900px] text-center sm:text-left font-normal text-dimWhite text-[18px] leading-[30.8px] mb-[18px]">{value}</p>)}
 
           {/* known for, born, place of birth */}
           <div>

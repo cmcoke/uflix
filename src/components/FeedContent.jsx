@@ -22,6 +22,7 @@ const FeedContent = ({ content, i, movieLink, tvShowLink, movieAndTvShowLink }) 
       break;
   }
 
+
   return (
     <div className="px-[5px] py-[17px] fade-animation">
       <Link to={url} className='overflow-hidden inline-block'>

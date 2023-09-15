@@ -39,7 +39,7 @@ const FeaturedContent = ({ data }) => {
 
                   <div className="slider-content">
 
-                    <h1 className="font-semibold text-[1.8rem] ss:text-[2.6rem] sm:text-[2.5rem] md:text-[3.5rem] xl:text-[4.1rem] lg:mb-0">{content.title || content.name}</h1>
+                    <h1 className="font-semibold text-[1.8rem] ss:text-[2.6rem] sm:text-[2.5rem] md:text-[3.5rem] xl:text-[4.1rem] xl:leading-[4.5rem] lg:mb-[2rem]">{content.title || content.name}</h1>
 
                     <p className="hidden ss:block font-normal text-[1.2rem] lg:text-[1.25rem] xl:text-[1.21rem] leading-[30.8px] ss:mb-4 lg:mb-4 lg:max-w-[700px]">{content.overview}</p>
 
