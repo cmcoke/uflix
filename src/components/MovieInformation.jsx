@@ -13,7 +13,7 @@ const MovieInformation = () => {
 
   const { id } = useParams();
   const { data: movieData, isError: movieisError, isLoading: movieisLoading, refetch } = useQuery(['movie', id], () => fetchMovie(id), { enabled: false });
-  const { data: movieRecommendationData, isError: movieRecommendationisError, isLoading: movieRecommendationisLoading } = useQuery('movie-recommendation', () => fetchMovieRecommendations({ list: '/recommendations', movie_id: id }));
+  const { data: movieRecommendationData, isError: movieRecommendationisError, isLoading: movieRecommendationisLoading } = useQuery('movie-recommendation', () => fetchMovieRecommendations({ list: 'recommendations', movie_id: id }));
   const selectMovieGenreOrCategory = movieGenreOrCategory(state => state.selectMovieGenreOrCategory);
   const numberOfFeedContents = 12;
   const movieLink = '';
@@ -21,8 +21,8 @@ const MovieInformation = () => {
 
   // when one of the recommended movies is clicked the fetchMovie() is refetched for the recommended movie that was clicked.
   useEffect(() => {
-    refetch()
-  }, [id, refetch])
+    refetch();
+  }, [id, refetch]);
 
 
   if (movieisLoading || movieRecommendationisLoading) {
@@ -35,11 +35,11 @@ const MovieInformation = () => {
           speedMultiplier={1.5}
         />
       </div>
-    )
+    );
   }
 
   if (movieisError || movieRecommendationisError) {
-    return <div className="container fetching-data">There is a network error, please try again later.</div>
+    return <div className="container fetching-data">There is a network error, please try again later.</div>;
   }
 
   return (
@@ -200,9 +200,9 @@ const MovieInformation = () => {
 
     </div>
 
-  )
+  );
 
 
-}
+};
 
-export default MovieInformation
+export default MovieInformation;

@@ -26,7 +26,7 @@ const App = () => {
   const handleClick = () => {
     setToggle(prevState => !prevState);
     document.querySelector("body").classList.toggle("active");
-  }
+  };
 
 
   return (
@@ -39,7 +39,7 @@ const App = () => {
       <main className="flex-1 relative z-0 sm:pl-[7rem]">
 
         {/* shows the hamburger menu icon only on mobile screens */}
-        <div className="ss:hidden absolute right-7 top-4 bg-white p-2 rounded-full">
+        <div className="ss:hidden absolute right-7 top-4 bg-white p-2 rounded-full z-10">
           <img src={toggle ? closeBlack : menu} alt={toggle ? 'close button' : 'menu button'} onClick={handleClick} />
         </div>
 
@@ -96,8 +96,8 @@ const App = () => {
       </CSSTransition>
 
     </div>
-  )
+  );
 
-}
+};
 
-export default App
+export default App;

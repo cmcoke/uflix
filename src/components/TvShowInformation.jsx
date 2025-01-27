@@ -12,7 +12,7 @@ const TvShowInformation = () => {
 
   const { id } = useParams();
   const { data: tvShowData, isError: tvShowisError, isLoading: tvShowisLoading, refetch } = useQuery(['tv-show', id], () => fetchTvShow(id), { enabled: false });
-  const { data: tvShowRecommendationData, isError: tvShowRecommendationisError, isLoading: tvShowRecommendationisLoading } = useQuery('tv-show-recommendation', () => fetchTvShowRecommendations({ list: '/recommendations', tv_id: id }));
+  const { data: tvShowRecommendationData, isError: tvShowRecommendationisError, isLoading: tvShowRecommendationisLoading } = useQuery('tv-show-recommendation', () => fetchTvShowRecommendations({ list: 'recommendations', tv_id: id }));
   const selectTvShowGenreOrCategory = tvShowGenreOrCategory(state => state.selectTvShowGenreOrCategory);
   const numberOfFeedContents = 12;
   const tvShowLink = '';
@@ -20,8 +20,8 @@ const TvShowInformation = () => {
 
   // when one of the recommended movies is clicked the fetchMovie() is refetched for the recommended movie that was clicked.
   useEffect(() => {
-    refetch()
-  }, [id, refetch])
+    refetch();
+  }, [id, refetch]);
 
 
   if (tvShowisLoading || tvShowRecommendationisLoading) {
@@ -34,12 +34,12 @@ const TvShowInformation = () => {
           speedMultiplier={1.5}
         />
       </div>
-    )
+    );
   }
 
 
   if (tvShowisError || tvShowRecommendationisError) {
-    return <div className="container fetching-data">There is a network error, please try again later.</div>
+    return <div className="container fetching-data">There is a network error, please try again later.</div>;
   }
 
   return (
@@ -200,7 +200,7 @@ const TvShowInformation = () => {
 
 
     </div>
-  )
-}
+  );
+};
 
-export default TvShowInformation
+export default TvShowInformation;
