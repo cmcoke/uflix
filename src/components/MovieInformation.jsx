@@ -49,7 +49,22 @@ const MovieInformation = () => {
       {/* movie backdrop image */}
       <div className="content-image">
         <div className="backdrop-image">
-          <img src={`https://image.tmdb.org/t/p/original/${movieData?.backdrop_path}`} alt={movieData?.name} />
+
+          <div className="relative">
+            <img
+              src={movieData?.backdrop_path ? `https://image.tmdb.org/t/p/original/${movieData?.backdrop_path}` : ''}
+              alt={movieData?.backdrop_path ? movieData?.name : 'No image available'}
+              className="w-full h-auto"
+            />
+
+            {/* Show this text if no image is available */}
+            {!movieData?.backdrop_path && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-800 text-white text-xl">
+                {movieData?.name || 'No image available'}
+              </div>
+            )}
+          </div>
+
         </div>
       </div>
 

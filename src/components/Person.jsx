@@ -12,12 +12,12 @@ const Person = () => {
   const { data, isError, isLoading, refetch } = useQuery(['person', id], () => fetchPersonDetail({ person_id: id }), { enabled: false });
 
   // splits the array of strings by new line for the 'biography' property
-  let bio = data?.biography?.split("\n\n")
+  let bio = data?.biography?.split("\n\n");
 
 
   useEffect(() => {
-    refetch()
-  }, [id, refetch])
+    refetch();
+  }, [id, refetch]);
 
   if (isLoading) {
     return (
@@ -29,15 +29,15 @@ const Person = () => {
           speedMultiplier={1.5}
         />
       </div>
-    )
+    );
   }
 
   if (isError) {
-    return <div className="container fetching-data">There is a network error, please try again later.</div>
+    return <div className="container fetching-data">There is a network error, please try again later.</div>;
   }
 
   return (
-    <div className="content fade-animation mt-[5rem]">
+    <div className="fade-animation mt-[5rem]">
 
       <div className="information">
 
@@ -117,7 +117,7 @@ const Person = () => {
       </div>
 
     </div>
-  )
-}
+  );
+};
 
-export default Person
+export default Person;

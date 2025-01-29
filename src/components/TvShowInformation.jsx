@@ -49,7 +49,22 @@ const TvShowInformation = () => {
       {/* tv show backdrop image */}
       <div className="content-image">
         <div className="backdrop-image">
-          <img src={`https://image.tmdb.org/t/p/original/${tvShowData?.backdrop_path}`} alt={tvShowData?.name} />
+
+          <div className="relative">
+            <img
+              src={tvShowData?.backdrop_path ? `https://image.tmdb.org/t/p/original/${tvShowData?.backdrop_path}` : ''}
+              alt={tvShowData?.backdrop_path ? tvShowData?.name : 'No image available'}
+              className="w-full h-auto"
+            />
+
+            {/* Show this text if no image is available */}
+            {!tvShowData?.backdrop_path && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-800 text-white text-xl">
+                {tvShowData?.name || 'No image available'}
+              </div>
+            )}
+          </div>
+
         </div>
       </div>
 
@@ -87,7 +102,7 @@ const TvShowInformation = () => {
 
               <div className="flex  space-x-5 items-center">
                 <p className="max-w-[600px] text-center sm:text-left font-normal text-[18px] leading-[30.8px] text-dimWhite">Network:</p>
-                <p className="max-w-[600px] text-center sm:text-left font-normal text-[18px] leading-[30.8px]">{tvShowData?.networks ? tvShowData?.networks[0].name : 'N/A'}</p>
+                <p className="max-w-[600px] text-center sm:text-left font-normal text-[18px] leading-[30.8px]">{tvShowData?.networks ? tvShowData?.networks[0]?.name : 'N/A'}</p>
               </div>
 
               <div className="flex space-x-5 my-2 items-center">
