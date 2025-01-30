@@ -155,10 +155,10 @@ const TvShowInformation = () => {
           {/* tv show cast members */}
           <div className="information-cast mb-8">
 
-            <h2 className={tvShowData?.credits.cast.length < 1 ? 'hidden' : 'font-poppins text-3xl mb-11'}>Cast Members</h2>
+            <h2 className={tvShowData?.credits?.cast?.length < 1 ? 'hidden' : 'font-poppins text-3xl mb-11'}>Cast Members</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-              {tvShowData && tvShowData.credits.cast.map((character, i) => (
+              {tvShowData && tvShowData?.credits?.cast?.map((character, i) => (
                 // if the character profile path exist show the respected image of the character
                 character.profile_path
                   ? (

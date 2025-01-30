@@ -6,7 +6,7 @@ import { noImage } from '../assets/index';
 const FeedContent = ({ content, i, movieLink, tvShowLink, movieAndTvShowLink }) => {
 
   // a switch statement is used to determine the type of url for a movie or tv show
-  let url = ''
+  let url = '';
 
   switch (url) {
     case movieLink:
@@ -30,11 +30,21 @@ const FeedContent = ({ content, i, movieLink, tvShowLink, movieAndTvShowLink }) 
       </Link>
       <h5 className="mt-[15px] mb-2 text-ellipsis text-[1rem] text-center">{content.title || content.name}</h5>
       <div className="flex justify-evenly items-end">
-        <StarRatings rating={content.vote_average / 2} numberOfStars={5} starDimension="15px" starRatedColor="rgb(250, 175, 0)" starEmptyColor='#fff' /> {' '}
-        <span className="text-[#80868b] text-[14px]">{content.vote_average.toFixed(1)}</span>
+
+        <StarRatings
+          rating={(content?.vote_average ?? 0) / 2}
+          numberOfStars={5}
+          starDimension="15px"
+          starRatedColor="rgb(250, 175, 0)"
+          starEmptyColor='#fff'
+        />
+        <span className="text-[#80868b] text-[14px]">
+          {content?.vote_average ? content.vote_average.toFixed(1) : 'N/A'}
+        </span>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FeedContent
+export default FeedContent;
